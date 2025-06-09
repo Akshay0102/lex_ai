@@ -25,7 +25,7 @@ app = FastAPI()
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], 
+    allow_origins=["*"],  # also add the ngrok origin just in case, 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -37,6 +37,8 @@ class Query(BaseModel):
 
 # Load FAISS vectorstore and embeddings
 embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+
+
 #index_path = r"C:\Users\pranj\Desktop\Lex AI\backend\embeddings"
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 index_path = os.path.join(BASE_DIR, "embeddings")
